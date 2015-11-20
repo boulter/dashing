@@ -1,0 +1,36 @@
+<script type='text/javascript'>
+$(function() {
+  // These settings override the defaults set in application.coffee. You can do this on a per dashboard basis.
+  Dashing.widget_base_dimensions = [320, 285]
+  Dashing.numColumns = 5
+
+  // display resolution is 1600x900
+
+});
+</script>
+<% content_for :title do %>Boulter Home<% end %>
+<div class="gridster">
+  <ul>
+	<li data-row="1" data-col="1" data-sizex="1" data-sizey="1">
+	  <div data-view="TwelveHourClock"></div>
+	</li>
+	<li data-row="1" data-col="1" data-sizex="1" data-sizey="1">
+	  <div data-id="weather" data-view="Weather"></div>
+	</li>
+	<li data-row="1" data-col="1" data-sizex="1" data-sizey="1">
+	  <div data-view="Countdown" data-title="Days until Christmas" data-end="25-Dec-2015"></div>
+	</li>
+	<li data-row="1" data-col="4" data-sizex="2" data-sizey="1">
+	  <div data-id="school" data-view="School"></div>
+	</li>
+	<li data-row="2" data-col="1" data-sizex="2" data-sizey="2">
+	  <div data-id="trafficmap" data-view="Trafficmap" data-title="Boston Traffic" data-lat="42.4305897" data-long="-71.1340644" data-zoom="11" ></div>
+	</li>	
+	<li data-row="2" data-col="3" data-sizex="1" data-sizey="1">
+	  <div data-id="catchores" data-view="Catchores"></div>
+	</li>
+	<li data-row="2" data-col="4" data-sizex="2" data-sizey="1">
+	  <div data-id="calendar" data-view="Calendar"></div>
+	</li>
+  </ul>
+</div>
