@@ -13,6 +13,6 @@ class Dashing.Catchores extends Dashing.Widget
       audrey = "food"
       elliott = "\uD83D\uDCA7"
     
-    @set('title', "\uD83D\uDC31")
+    @set('title', "Cat chores")
     @set('audrey', "Audrey: #{ audrey }")
     @set('elliott', "Elliott: #{ elliott }")
