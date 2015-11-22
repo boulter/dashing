@@ -10,13 +10,15 @@ $background-color:  #dc5945;
 
   background-color: $background-color;
 
+  padding-top: 10px 10px;
+
   h2 { font-size: 1.5em;}
 
   h1 { font-size: 5em;}
 
   .countdown-time {
     margin-top: 0px;
-    color: gold;
+    margin-bottom: 0px;
   }
 
   .more-info {
