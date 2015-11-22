@@ -11,7 +11,7 @@ class Dashing.Catchores extends Dashing.Widget
     
     if weekOfYear % 2 == 1
       audrey = "food"
-      elliott = "\uD83D\uDCA7"
+      elliott = "water"
     
     @set('title', "Cat chores")
     @set('audrey', "Audrey: #{ audrey }")
