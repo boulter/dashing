@@ -1,0 +1,14 @@
+<div>
+  <canvas id="current_icon" class="forecast-icon" width="100px" height="100px"></canvas>
+  <div class="temp" data-bind="current_temp | raw"></div>
+</div>
+
+<div>
+  <canvas id="later_icon" class="forecast-icon" width="50px" height="50px"></canvas>
+  <div class="summary" data-bind="later_desc | raw"></div>
+</div>
+
+<div class="high-low">
+  ↑ <span data-bind="forecast_high_temp" />
+  ↓ <span data-bind="forecast_low_temp" />
+</div>
