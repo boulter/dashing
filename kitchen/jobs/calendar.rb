@@ -5,8 +5,6 @@ require_relative 'config'
 
 uri = URI ICAL_URL
 
-puts ICAL_URL
-
 SCHEDULER.every '15m', :first_in => 0 do |job|
 
   http = Net::HTTP.new(uri.host, uri.port)
