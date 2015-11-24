@@ -18,16 +18,16 @@ class Dashing.Calendar extends Dashing.Widget
     if event.is_all_day
       @set("event_times", "All day")
     else 
-      @set('event_times', start.tz(timezone).format('h:mm a') + " - " + end.tz(timezone).format('h:mm a'))
+      @set('event_times', start.tz(timezone).format('h:mm a') + " - " + end.tz(timezone).format('h:mma'))
 
     next_events = []
     for next_event in rest
       start = moment(next_event.start).tz(timezone)
       start_date = start.format('ddd')
       if next_event.is_all_day
-        start_time = "All day"
+        start_time = "ALL DAY"
       else 
-        start_time = start.format('h:mm a')
+        start_time = start.format('h:mma')
 
       next_events.push { summary: next_event.summary, start_date: start_date, start_time: start_time }
     @set('next_events', next_events)
