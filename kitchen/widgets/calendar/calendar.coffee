@@ -10,7 +10,7 @@ class Dashing.Calendar extends Dashing.Widget
 
     start = moment(event.start)
     end = moment(event.end)
-    timezone = 'UTC'
+    timezone = 'America/New_York'
 
     @set('event',event)
     @set('event_date', start.tz(timezone).format('dddd'))
