@@ -1,9 +1,13 @@
+require 'time'
+require 'date'
 require 'icalendar'
 require 'net/http'
 require 'net/https'
+require 'tzinfo'
 require_relative 'config'
 
 uri = URI ICAL_URL
+tz = TZInfo::Timezone.get('America/New_York')
 
 SCHEDULER.every '15m', :first_in => 0 do |job|
 
@@ -14,19 +18,26 @@ SCHEDULER.every '15m', :first_in => 0 do |job|
   calendars = Icalendar.parse(result)
   calendar = calendars.first
 
+  now = DateTime.now
+  puts "now:" + now.to_s
+
   events = calendar.events.map do |event|
     {
-      start: event.dtstart,
-      end: event.dtend,
+      start: tz.local_to_utc(DateTime.parse(event.dtstart.to_s)),
+      end: tz.local_to_utc(DateTime.parse(event.dtend.to_s)),
       summary: event.summary,
       is_all_day: event.dtstart.class.name == "Icalendar::Values::Date" 
     }
-  end.select { |event| event[:start] > DateTime.now }
+  end.select { |event| event[:start] > now }
 
   events = events.sort { |a, b| a[:start] <=> b[:start] }
-  
+
   puts "loaded #{ events.length } upcoming calendar events"
   events = events[0..8]
+  
+  events.each do |event|
+     puts " #{event[:start]} - #{event[:end]}: #{event[:summary]}"
+  end
   
   send_event('calendar', { events: events })
 end
