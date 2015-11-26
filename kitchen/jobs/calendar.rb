@@ -19,6 +19,7 @@ SCHEDULER.every '15m', :first_in => 0 do |job|
   calendar = calendars.first
 
   now = DateTime.now
+  next_week = now + 7 * 86400
   puts "now:" + now.to_s
 
   events = calendar.events.map do |event|
@@ -28,12 +29,12 @@ SCHEDULER.every '15m', :first_in => 0 do |job|
       summary: event.summary,
       is_all_day: event.dtstart.class.name == "Icalendar::Values::Date" 
     }
-  end.select { |event| event[:start] > now }
+  end.select { |event| event[:start] > now && event[:start] < next_week }
 
   events = events.sort { |a, b| a[:start] <=> b[:start] }
 
   puts "loaded #{ events.length } upcoming calendar events"
-  events = events[0..8]
+  events = events[0..7]
   
   events.each do |event|
      puts " #{event[:start]} - #{event[:end]}: #{event[:summary]}"
