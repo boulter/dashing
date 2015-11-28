@@ -8,7 +8,11 @@ class Dashing.School extends Dashing.Widget
       when 1 then "Art"
       when 2 then "Music"
       when 3 then "PE, Music"
-      when 4 then "All-school meeting, PE"
+      when 4
+        if moment().format('W') % 2 == 1
+          "All-school meeting, PE"
+        else 
+          "Buddies, PE"
       when 5 then "Library"
       else "Stay at home"
 
@@ -17,7 +21,11 @@ class Dashing.School extends Dashing.Widget
       when 1 then "Library"
       when 2 then "PE"
       when 3 then "Music"
-      when 4 then "All-school meeting"
+      when 4
+        if moment().format('W') % 2 == 1
+          "All-school meeting"
+        else 
+          "Buddies, PE"
       when 5 then "Art"
       else "Stay at home"
 
