@@ -1,0 +1,43 @@
+// ----------------------------------------------------------------------------
+// Sass declarations
+// ----------------------------------------------------------------------------
+$background-color:  #ec663c;
+
+$title-color:       rgba(255, 255, 255, 0.7);
+$moreinfo-color:    rgba(255, 255, 255, 0.7);
+
+// ----------------------------------------------------------------------------
+// Widget-timetohome styles
+// ----------------------------------------------------------------------------
+.widget-timetohome {
+
+  background-color: $background-color;
+
+  padding-top: 10px !important;
+  padding-bottom: 10px !important;
+
+  .title {
+    color: $title-color;
+  }
+
+  h2 {
+     font-size: 41px;
+   }
+
+  .more-info {
+    color: $moreinfo-color;
+  }
+
+  h3 {
+    font-size: 37px;
+  }
+
+  .updated-at {
+    color: rgba(255, 255, 255, 0.7);
+  }
+
+
+  &.large h3 {
+    font-size: 65px;
+  }
+}
