@@ -19,8 +19,9 @@ SCHEDULER.every '15m', :first_in => 0 do |job|
   calendar = calendars.first
 
   now = DateTime.now
-  next_week = now + 7 * 86400
+  next_week = now + 7
   puts "now:" + now.to_s
+  puts "end:" + next_week.to_s
 
   events = calendar.events.map do |event|
     {
