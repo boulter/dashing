@@ -4,5 +4,8 @@ class Dashing.Timetohome extends Dashing.Widget
     @data = data
     text = ""
     for label,loc of @data.locations
-      @set(label, "#{ loc.minutesToHome } mins / #{ Math.round(loc.distanceToHome) } mi") 
+      if loc.minutesToHome == 0
+        @set(label, "at home") 
+      else
+        @set(label, "#{ loc.minutesToHome } mins / #{ Math.round(loc.distanceToHome) } mi") 
     @set('title', "Time to Home")
