@@ -11,7 +11,7 @@ class Dashing.School extends Dashing.Widget
       when 4
         if moment().format('W') % 2 == 1
           "All-school meeting, PE"
-        else 
+        else
           "Buddies, PE"
       when 5 then "Library"
       else "Stay at home"
@@ -23,9 +23,9 @@ class Dashing.School extends Dashing.Widget
       when 3 then "Music"
       when 4
         if moment().format('W') % 2 == 1
-          "All-school meeting"
-        else 
-          "Buddies, PE"
+          "All-school meeting, Music, PE"
+        else
+          "Buddies, Music, PE"
       when 5 then "Art"
       else "Stay at home"
 
@@ -37,5 +37,3 @@ class Dashing.School extends Dashing.Widget
 
     @set('audrey', "Audrey: #{ @getAudrey(dayOfWeek) }")
     @set('elliott', "Elliott: #{ @getElliott(dayOfWeek) }")
-
-
