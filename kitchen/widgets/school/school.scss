@@ -11,7 +11,7 @@ $moreinfo-color:    rgba(255, 255, 255, 0.7);
 // ----------------------------------------------------------------------------
 .widget-school {
 
-  padding: 10px 10px;
+  padding: 10px 10px !important;
 
   background-color: $background-color;
 
@@ -31,6 +31,10 @@ $moreinfo-color:    rgba(255, 255, 255, 0.7);
 
   h3 {
     font-size:40px;
+  }
+
+  img {
+    padding: 5px;
   }
 
   &.large h3 {
