@@ -28,18 +28,18 @@ SCHEDULER.every '15m', :first_in => 0 do |job|
       start: tz.local_to_utc(DateTime.parse(event.dtstart.to_s)),
       end: tz.local_to_utc(DateTime.parse(event.dtend.to_s)),
       summary: event.summary,
-      is_all_day: event.dtstart.class.name == "Icalendar::Values::Date" 
+      is_all_day: event.dtstart.class.name == "Icalendar::Values::Date"
     }
   end.select { |event| event[:start] > now && event[:start] < next_week }
 
   events = events.sort { |a, b| a[:start] <=> b[:start] }
 
   puts "loaded #{ events.length } upcoming calendar events"
-  events = events[0..7]
-  
+  events = events[0..5]
+
   events.each do |event|
      puts " #{event[:start]} - #{event[:end]}: #{event[:summary]}"
   end
-  
+
   send_event('calendar', { events: events })
 end
