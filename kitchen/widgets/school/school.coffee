@@ -3,11 +3,9 @@ class Dashing.School extends Dashing.Widget
   ready: ->
     setInterval(@display, 1000)
 
-  getAudrey: () ->
+  getAudrey: (today) ->
 
-    today = new Date()
-
-    if (today.getHours() > 19 && today.getMinutes() >= 15) || today.getHours() > 19
+    if (today.getHours() == 19 && today.getMinutes() >= 15) || today.getHours() > 19
       return "Go to bed"
 
     day = today.getDay()
@@ -24,11 +22,9 @@ class Dashing.School extends Dashing.Widget
       when 5 then "Library"
       else "Stay at home"
 
-  getElliott: () ->
+  getElliott: (today) ->
 
-    today = new Date()
-
-    if (today.getHours() > 19 && today.getMinutes() >= 15) || today.getHours() > 19
+    if (today.getHours() == 19 && today.getMinutes() >= 15) || today.getHours() > 19
       return "Go to bed"
 
     day = today.getDay()
@@ -46,5 +42,7 @@ class Dashing.School extends Dashing.Widget
       else "Stay at home"
 
   display: =>
-    @set('audrey', "#{ @getAudrey() }")
-    @set('elliott', "#{ @getElliott() }")
+
+    today = new Date()
+    @set('audrey', "#{ @getAudrey(today) }")
+    @set('elliott', "#{ @getElliott(today) }")
