@@ -39,5 +39,10 @@ SCHEDULER.every '30m', :first_in => 0 do |job|
 
   forecast_later_desc   = forecast["hourly"]["summary"]
   forecast_later_icon   = forecast["hourly"]["icon"]
-  send_event('forecast', { current_temp: "#{forecast_current_temp}&deg;", current_icon: "#{forecast_current_icon}", current_desc: "#{forecast_current_desc}", next_icon: "#{forecast_next_icon}", next_desc: "#{forecast_next_desc}", later_icon: "#{forecast_later_icon}", later_desc: "#{forecast_later_desc}", forecast_high_temp: "#{forecast_high_temp}", forecast_low_temp: "#{forecast_low_temp}"})
+
+  data = { current_temp: "#{forecast_current_temp}&deg;", current_icon: "#{forecast_current_icon}", current_desc: "#{forecast_current_desc}", next_icon: "#{forecast_next_icon}", next_desc: "#{forecast_next_desc}", later_icon: "#{forecast_later_icon}", later_desc: "#{forecast_later_desc}", forecast_high_temp: "#{forecast_high_temp}", forecast_low_temp: "#{forecast_low_temp}"}
+
+  puts data
+
+  send_event('forecast', data)
 end
