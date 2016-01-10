@@ -14,5 +14,5 @@ SCHEDULER.every '10m', :first_in => 0 do |job|
   puts "energy: #{today_energy}"
   puts "current: #{current_power}"
 
-  send_event('solaredge', { current_power: "#{current_power}", today_energy: "#{today_energy}" })
+  send_event('solaredge', { currentPower: "#{current_power}", todayEnergy: "#{today_energy}" })
 end

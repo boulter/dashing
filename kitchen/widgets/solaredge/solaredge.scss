@@ -1,0 +1,50 @@
+// ----------------------------------------------------------------------------
+// Sass declarations
+// ----------------------------------------------------------------------------
+$background-color:  #ec663c;
+
+$title-color:       rgba(255, 255, 255, 0.7);
+$moreinfo-color:    rgba(255, 255, 255, 0.7);
+
+// ----------------------------------------------------------------------------
+// Widget-catchores styles
+// ----------------------------------------------------------------------------
+.widget-solaredge {
+
+  background-color: #E4C13F;
+
+  .title {
+    color: $title-color;
+  }
+
+  img {
+    padding-bottom: 30px;
+  }
+
+  .more-info {
+    color: $moreinfo-color;
+  }
+
+  h1 {
+    margin-bottom: 0;
+  }
+
+  h2 {
+    font-size: 30px;
+    color: black;
+  }
+
+  h3 {
+    font-size: 43px;
+
+  }
+
+  .updated-at {
+    color: rgba(255, 255, 255, 0.7);
+  }
+
+
+  &.large h3 {
+    font-size: 65px;
+  }
+}
