@@ -15,7 +15,7 @@ class Dashing.School extends Dashing.Widget
       when 2 then "Music"
       when 3 then "PE, Music"
       when 4
-        if moment().format('W') % 2 == 1
+        if moment().format('W') % 2 == 0
           "All-school meeting, PE"
         else
           "Buddies, PE"
@@ -34,7 +34,7 @@ class Dashing.School extends Dashing.Widget
       when 2 then "PE"
       when 3 then "Music"
       when 4
-        if moment().format('W') % 2 == 1
+        if moment().format('W') % 2 == 0
           "All-school meeting, Music, PE"
         else
           "Buddies, Music, PE"
