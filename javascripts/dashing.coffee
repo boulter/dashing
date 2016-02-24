@@ -2,6 +2,7 @@
 #= require es5-shim
 #= require batman
 #= require batman.jquery
+#= require screenfull
 
 
 Batman.Filters.prettyNumber = (num) ->
