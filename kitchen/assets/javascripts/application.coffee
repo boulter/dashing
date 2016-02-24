@@ -16,8 +16,8 @@ Dashing.on 'ready', ->
   contentWidth = (Dashing.widget_base_dimensions[0] + Dashing.widget_margins[0] * 2) * Dashing.numColumns
 
   $(document.documentElement).click ->
-    if screenfull.enabled and not screenfull.isFullscreen
-      screenfull.request()
+    if screenfull.enabled
+      screenfull.toggle()
 
   Batman.setImmediate ->
     $('.gridster').width(contentWidth)
