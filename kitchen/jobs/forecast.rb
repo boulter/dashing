@@ -1,6 +1,6 @@
 require 'net/https'
 require 'json'
-require_relative 'config'
+require_relative '../configuration'
 
 # Forecast API Key from https://developer.forecast.io
 forecast_api_key = DARK_SKY_API_KEY
@@ -14,13 +14,13 @@ forecast_location_long = "-71.2601079"
 # "si" - International System of Units
 # "uk" - SI w. windSpeed in mph
 forecast_units = "us"
-  
+
 SCHEDULER.every '30m', :first_in => 0 do |job|
   http = Net::HTTP.new("api.forecast.io", 443)
   http.use_ssl = true
   http.verify_mode = OpenSSL::SSL::VERIFY_PEER
   response = http.request(Net::HTTP::Get.new("/forecast/#{forecast_api_key}/#{forecast_location_lat},#{forecast_location_long}?units=#{forecast_units}"))
-  forecast = JSON.parse(response.body)  
+  forecast = JSON.parse(response.body)
   forecast_current_temp = forecast["currently"]["temperature"].round
   forecast_current_icon = forecast["currently"]["icon"]
   forecast_current_desc = forecast["currently"]["summary"]

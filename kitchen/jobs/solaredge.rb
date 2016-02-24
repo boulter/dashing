@@ -1,6 +1,6 @@
 require 'net/https'
 require 'json'
-require_relative 'config'
+require_relative '../configuration'
 
 SCHEDULER.every '10m', :first_in => 0 do |job|
   http = Net::HTTP.new("monitoringapi.solaredge.com", 443)

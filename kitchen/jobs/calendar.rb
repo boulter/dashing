@@ -4,7 +4,7 @@ require 'icalendar'
 require 'net/http'
 require 'net/https'
 require 'tzinfo'
-require_relative 'config'
+require_relative '../configuration'
 
 uri = URI ICAL_URL
 tz = TZInfo::Timezone.get('America/New_York')

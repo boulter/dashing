@@ -1,7 +1,7 @@
 require 'net/http'
 require 'net/https'
 require 'json'
-require_relative 'config'
+require_relative '../configuration'
 
 SCHEDULER.every '2m', :first_in => 0 do |job|
 
@@ -11,27 +11,27 @@ SCHEDULER.every '2m', :first_in => 0 do |job|
   }
 
   params = [
-    { 
-      "label"=>"Jeff", 
+    {
+      "label"=>"Jeff",
       "username"=>"apple@boulter.com",
       "password"=>ICLOUD_PASSWORD_JEFF,
       "icon"=>"/assets/jeff.jpg",
       "deviceid"=>'UvEq+TEmCYE62MQ05IdeK5/owQHSAtg/WiACGYuPAakLxgq7r2imL+HYVNSUzmWV'
     },
-    { 
-      "label"=>"Anne", 
+    {
+      "label"=>"Anne",
       "username"=>"anne@boulter.com",
       "password"=>ICLOUD_PASSWORD_ANNE,
       "icon"=>"/assets/anne.jpg",
       "deviceid"=>'ihbPn6/ImyCYk2fKG/z8cLAfvWKtw3TbrSze4i4+BsYVWS8DrRsWvuHYVNSUzmWV'
     }
   ]
-  
+
   cmd = "lib/findmyphones.py '" + JSON.dump(params) + "'"
   locations = JSON.load(`#{cmd}`)
-  
+
   puts locations
-  
+
   locations.each do |key, loc|
       uri = URI.parse("https://maps.googleapis.com/maps/api/directions/json")
       args = {origin: "#{loc['latitude']},#{loc['longitude']}", destination: HOME_COORDS, key: GOOGLE_API_KEY}
@@ -41,12 +41,12 @@ SCHEDULER.every '2m', :first_in => 0 do |job|
       request = Net::HTTP::Get.new(uri.request_uri)
       response = http.request(request)
       directions = JSON.parse(response.body)
-      
+
       loc['icon'] = icons[key]
-            
+
       loc['minutesToHome'] = directions['routes'][0]['legs'][0]['duration']['value'] / 60
       loc['distanceToHome'] = directions['routes'][0]['legs'][0]['distance']['value'] / 1609.34
-      
+
   end
 
   send_event('timetohome', { locations: locations })
