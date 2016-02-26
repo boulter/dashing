@@ -27,10 +27,14 @@ SCHEDULER.every '2m', :first_in => 0 do |job|
     }
   ]
 
-  cmd = "lib/findmyphones.py '" + JSON.dump(params) + "'"
-  locations = JSON.load(`#{cmd}`)
+  params_json = JSON.dump(params)
+#  puts params_json
+  cmd = "lib/findmyphones.py '" + params_json + "'"
+  out = `#{cmd}`
+#  puts out
+  locations = JSON.load(out)
 
-  puts locations
+#  puts locations
 
   locations.each do |key, loc|
       uri = URI.parse("https://maps.googleapis.com/maps/api/directions/json")
