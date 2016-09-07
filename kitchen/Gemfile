@@ -3,5 +3,6 @@ source 'https://rubygems.org'
 gem 'dashing'
 
 gem 'icalendar'
+gem 'icalendar-recurrence'
 gem 'nest_thermostat'
 gem 'xml-simple'

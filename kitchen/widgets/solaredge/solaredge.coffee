@@ -3,6 +3,7 @@ class Dashing.Solaredge extends Dashing.Widget
   data = {}
 
   ready: ->
+    @display()
     setInterval(@display, 5000)
 
   display: =>
