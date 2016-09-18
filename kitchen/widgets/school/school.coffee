@@ -11,15 +11,15 @@ class Dashing.School extends Dashing.Widget
     day = today.getDay()
 
     switch day
-      when 1 then "Art"
-      when 2 then "Music"
+      when 1 then "Music"
+      when 2 then "Art"
       when 3 then "PE, Music"
       when 4
         if moment().format('W') % 2 == 0
-          "All-school meeting, PE"
+          "All-school meeting, Library"
         else
-          "Buddies, PE"
-      when 5 then "Library"
+          "Library"
+      when 5 then "PE"
       else "Stay at home"
 
   getElliott: (today) ->
@@ -30,15 +30,15 @@ class Dashing.School extends Dashing.Widget
     day = today.getDay()
 
     switch day
-      when 1 then "Library"
-      when 2 then "PE"
+      when 1 then "Art"
+      when 2 then "Music, PE"
       when 3 then "Music"
       when 4
         if moment().format('W') % 2 == 0
-          "All-school meeting, Music, PE"
+          "All-school meeting"
         else
-          "Buddies, Music, PE"
-      when 5 then "Art"
+          ""
+      when 5 then "Library, PE"
       else "Stay at home"
 
   display: =>
