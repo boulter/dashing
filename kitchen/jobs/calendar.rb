@@ -33,8 +33,10 @@ SCHEDULER.every '15m', :first_in => 0 do |job|
     if recurrent_events
       recurrent_events.each do |revent|
         allday = (revent.end_time == revent.start_time + (60*60*24))
-        evt = { summary: event.summary, start: DateTime.parse(revent.start_time.to_s), end: DateTime.parse(revent.end_time.to_s), is_all_day: allday }
-        events.push(evt)
+        if allday or now.to_s < revent.end_time.to_s
+          evt = { summary: event.summary, start: DateTime.parse(revent.start_time.to_s), end: DateTime.parse(revent.end_time.to_s), is_all_day: allday }
+          events.push(evt)
+        end
       end
     end
   end
