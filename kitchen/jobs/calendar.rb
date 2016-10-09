@@ -42,7 +42,7 @@ SCHEDULER.every '15m', :first_in => 0 do |job|
   events = events.sort { |a, b| a[:start] <=> b[:start] }
 
   puts "loaded #{ events.length } upcoming calendar events"
-  events = events[0..10]
+  events = events[0..7]
 
   events.each do |event|
      puts " #{event[:start]} - #{event[:end]}: #{event[:summary]}"
