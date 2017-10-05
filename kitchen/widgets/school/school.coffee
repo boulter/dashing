@@ -5,40 +5,40 @@ class Dashing.School extends Dashing.Widget
 
   getAudrey: (today) ->
 
-    if (today.getHours() == 19 && today.getMinutes() >= 15) || today.getHours() > 19
-      return "Go to bed"
-
-    day = today.getDay()
-
-    switch day
-      when 1 then "Music"
-      when 2 then "Art"
-      when 3 then "PE, Music"
-      when 4
-        if moment().format('W') % 2 == 0
-          "All-school meeting, Library"
-        else
-          "Library"
-      when 5 then "PE"
-      else "Stay at home"
-
-  getElliott: (today) ->
-
-    if (today.getHours() == 19 && today.getMinutes() >= 15) || today.getHours() > 19
+    if (today.getHours() == 19 && today.getMinutes() >= 30) || today.getHours() > 19
       return "Go to bed"
 
     day = today.getDay()
 
     switch day
       when 1 then "Art"
-      when 2 then "Music, PE"
+      when 2 then "Music, PE, Cello"
+      when 3 then "PE"
+      when 4
+        if moment().format('W') % 2 == 0
+          "All-school meeting"
+        else
+          "Book Buddies"
+      when 5 then "Music, Library"
+      else "Stay at home"
+
+  getElliott: (today) ->
+
+    if (today.getHours() == 19 && today.getMinutes() >= 30) || today.getHours() > 19
+      return "Go to bed"
+
+    day = today.getDay()
+
+    switch day
+      when 1 then "PE"
+      when 2 then "Library"
       when 3 then "Music"
       when 4
         if moment().format('W') % 2 == 0
-          "All-school meeting, Book Buddies"
+          "All-school meeting"
         else
-          ""
-      when 5 then "Library, PE"
+          "Music"
+      when 5 then "PE"
       else "Stay at home"
 
   display: =>
